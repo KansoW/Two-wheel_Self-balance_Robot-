@@ -1,0 +1,55 @@
+#header
+#global
+
+int get_pos(int pos){
+  #CALL IMU FOR X, X',THETA,THETA'
+  return pos;
+}
+
+int LQR(int pos){
+  int uforce
+
+  return uforce;
+}
+
+int cur2force(){
+  int force_est
+  #CALL INTERNAL CURRENT MEASURE FUNCTION
+  #CALL ENCODER FUNCTION TO CONVERT FROM CURRENT TO FORCE
+  return force_est;
+}
+
+int crnt_ctrl(int force_err){
+  int cur_dsr
+
+  return cur_dsr;
+}
+
+void curm(){
+  #CALL INTERNAL CURRENT MEASURE FUNCTION
+}
+
+int pwm_ctrl(int crnt_err){
+  int pw_adjust
+
+  return pw_adjust;
+}
+
+void main(){
+  for (#100Hz){
+    crnt_pos = get_pos();
+    uforce = LQR(crnt_pos);
+
+    for (#500Hz){
+      force_est = cur2force();
+      force_err = uforce - force_est;
+      motcur_desr = crnt_ctrl(force_err);
+
+      for (#2000Hz){
+        crnt_ms = curm();
+        crnt_err = motcur_desr - crnt_ms;
+        plant_v = pwm_ctrl(crnt_err);
+      }
+    }
+  }
+}

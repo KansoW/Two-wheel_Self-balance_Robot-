@@ -1,0 +1,1601 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     56262,       1593]
+NotebookOptionsPosition[     54447,       1555]
+NotebookOutlinePosition[     54786,       1570]
+CellTagsIndexPosition[     54743,       1567]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"Quit", "[", "]"}], ";"}], "\[IndentingNewLine]"}],
+  FontFamily->"Source Code Pro",
+  FontSize->16,
+  FontWeight->"Bold"]], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.},
+ CellChangeTimes->{{3.726935167938867*^9, 3.726935182162854*^9}, 
+   3.727503175549959*^9, 3.727503943814417*^9, 3.7275056476337967`*^9, 
+   3.727531681010901*^9},ExpressionUUID->"0458da7f-3ab3-4a9e-941a-\
+ddb013c724a6"],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox[
+   RowBox[{"(*", 
+    RowBox[{"Two", "-", 
+     RowBox[{"wheel", " ", "Self"}], "-", 
+     RowBox[{"balancing", " ", "Robot"}]}], "*)"}],
+   FontFamily->"Source Code Pro",
+   FontSize->22,
+   FontWeight->"Bold"], "\n", "\[IndentingNewLine]", 
+  RowBox[{
+   StyleBox[
+    RowBox[{
+     RowBox[{"V", " ", "=", " ", 
+      RowBox[{"g", " ", "m", " ", "R", " ", 
+       RowBox[{"Cos", "[", 
+        RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}]}], ";"}],
+    FontSize->16,
+    FontWeight->"Bold"], "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{"KE", "=", 
+      RowBox[{
+       RowBox[{
+        FractionBox["1", "2"], "m", "*", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"x", "'"}], "[", "t", "]"}], "-", 
+             RowBox[{"R", "*", 
+              RowBox[{
+               RowBox[{"\[Theta]", "'"}], "[", "t", "]"}], "*", 
+              RowBox[{"Cos", "[", 
+               RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}]}], ")"}], "^", 
+           "2"}], " ", "+", 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             RowBox[{"-", "R"}], "*", 
+             RowBox[{
+              RowBox[{"\[Theta]", "'"}], "[", "t", "]"}], "*", 
+             RowBox[{"Sin", "[", 
+              RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}], ")"}], "^", 
+           "2"}]}], ")"}]}], "+", 
+       RowBox[{
+        FractionBox["1", "2"], "*", "M", "*", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"x", "'"}], "[", "t", "]"}], "^", "2"}]}]}]}], ";"}],
+    FontSize->16,
+    FontWeight->"Bold"], "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{"L", " ", "=", " ", 
+     RowBox[{
+      RowBox[{"KE", "-", "V"}], " ", "//", "FullSimplify"}]}],
+    FontSize->16,
+    FontWeight->"Bold"], "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{
+     RowBox[{
+      StyleBox["Eq1",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      StyleBox[" ",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      StyleBox["=",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      StyleBox[" ",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      RowBox[{
+       RowBox[{
+        StyleBox[
+         RowBox[{
+          RowBox[{"D", "[", 
+           RowBox[{
+            RowBox[{"D", "[", 
+             RowBox[{"L", ",", " ", 
+              RowBox[{
+               RowBox[{"x", "'"}], "[", "t", "]"}]}], "]"}], ",", "t"}], 
+           "]"}], "-", 
+          RowBox[{"D", "[", 
+           RowBox[{"L", ",", 
+            RowBox[{"x", "[", "t", "]"}]}], "]"}]}],
+         FontSize->16,
+         FontWeight->"Bold"], 
+        StyleBox["\[Equal]",
+         FontSize->16,
+         FontWeight->"Bold"], 
+        RowBox[{"F", "[", "t", "]"}]}], 
+       StyleBox["//",
+        FontSize->16,
+        FontWeight->"Bold"], 
+       StyleBox["FullSimplify",
+        FontSize->16,
+        FontWeight->"Bold"]}]}], 
+     StyleBox[";",
+      FontSize->16,
+      FontWeight->"Bold"]}],
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox["\[IndentingNewLine]",
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{
+      StyleBox["Eq2",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      StyleBox[" ",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      StyleBox["=",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      StyleBox[" ",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      RowBox[{
+       RowBox[{
+        StyleBox[
+         RowBox[{
+          RowBox[{"D", "[", 
+           RowBox[{
+            RowBox[{"D", "[", 
+             RowBox[{"L", ",", " ", 
+              RowBox[{
+               RowBox[{"\[Theta]", "'"}], "[", "t", "]"}]}], "]"}], ",", 
+            "t"}], "]"}], "-", 
+          RowBox[{"D", "[", 
+           RowBox[{"L", ",", 
+            RowBox[{"\[Theta]", "[", "t", "]"}]}], "]"}]}],
+         FontSize->16,
+         FontWeight->"Bold"], 
+        StyleBox["\[Equal]",
+         FontSize->16,
+         FontWeight->"Bold"], "0"}], 
+       StyleBox["//",
+        FontSize->16,
+        FontWeight->"Bold"], 
+       StyleBox["FullSimplify",
+        FontSize->16,
+        FontWeight->"Bold"]}]}], 
+     StyleBox[";",
+      FontSize->16,
+      FontWeight->"Bold"]}],
+    FontSize->16,
+    FontWeight->"Bold"], "\[IndentingNewLine]", 
+   StyleBox[
+    RowBox[{"Eqns", " ", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{"Eq1", ",", "Eq2"}], "}"}]}],
+    FontSize->16,
+    FontWeight->"Bold"], "\[IndentingNewLine]"}]}]], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.},
+ CellChangeTimes->{{3.726935190711865*^9, 3.726935211097114*^9}, 
+   3.727503142854117*^9, 3.727503175550536*^9, {3.7275034761205883`*^9, 
+   3.727503480343943*^9}, {3.7275036383209677`*^9, 3.7275036471312513`*^9}, {
+   3.72750380916712*^9, 3.727503856015436*^9}, {3.7275038926020117`*^9, 
+   3.727503903959071*^9}, {3.72750413481604*^9, 3.727504208975831*^9}, {
+   3.7275052852863693`*^9, 3.727505289395258*^9}, {3.727505514320024*^9, 
+   3.7275055282669888`*^9}, {3.727505588097827*^9, 3.727505633257244*^9}, {
+   3.727506235685458*^9, 3.727506278320506*^9}, {3.727506397458096*^9, 
+   3.7275064005105753`*^9}, {3.727507563950248*^9, 3.727507564014317*^9}, 
+   3.7275075970506773`*^9, {3.727507670225813*^9, 3.727507691318879*^9}, 
+   3.727515802799436*^9, {3.727531652166688*^9, 3.727531681011183*^9}, {
+   3.727536774495151*^9, 3.727536778116919*^9}, {3.7275371247319803`*^9, 
+   3.7275371270561953`*^9}, {3.727537385706677*^9, 3.727537404166238*^9}, {
+   3.727537460631769*^9, 3.727537468349419*^9}, 
+   3.727537499669026*^9},ExpressionUUID->"9429a224-689a-4f9e-ae6b-\
+889c799f9f4c"],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", 
+  RowBox[{"(", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"m", "+", "M"}], ")"}], " ", 
+     SuperscriptBox[
+      RowBox[{
+       SuperscriptBox["x", "\[Prime]",
+        MultilineFunction->None], "[", "t", "]"}], "2"]}], "-", 
+    RowBox[{"2", " ", "m", " ", "R", " ", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"\[Theta]", "[", "t", "]"}], "]"}], " ", 
+     RowBox[{
+      SuperscriptBox["x", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}], " ", 
+     RowBox[{
+      SuperscriptBox["\[Theta]", "\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}]}], "+", 
+    RowBox[{"m", " ", "R", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "2"}], " ", "g", " ", 
+        RowBox[{"Cos", "[", 
+         RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}], "+", 
+       RowBox[{"R", " ", 
+        SuperscriptBox[
+         RowBox[{
+          SuperscriptBox["\[Theta]", "\[Prime]",
+           MultilineFunction->None], "[", "t", "]"}], "2"]}]}], ")"}]}]}], 
+   ")"}]}]], "Output",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.},
+ CellChangeTimes->{
+  3.727507825880975*^9, 3.727510567607608*^9, {3.727515807903798*^9, 
+   3.727515822019594*^9}, 3.727531652167345*^9, 3.727536864755455*^9, {
+   3.72753713327299*^9, 3.727537160136153*^9}, 3.727537238015471*^9, {
+   3.72753750265844*^9, 3.727537519097238*^9}, 3.7277996837901373`*^9, 
+   3.727799776667831*^9, 3.7278000954505253`*^9, 3.7278006674780912`*^9, {
+   3.727801100069549*^9, 3.72780111357066*^9}, 3.7281418520136147`*^9, 
+   3.728143737314764*^9, 3.7281450734247923`*^9, 3.728150165866102*^9, 
+   3.728150624632201*^9, 3.728150921398067*^9, {3.728150958610723*^9, 
+   3.7281509853524523`*^9}, 3.728151277270349*^9, 3.728151329634006*^9, {
+   3.72815137635075*^9, 3.7281513830564413`*^9}, 
+   3.728151493881445*^9},ExpressionUUID->"6ec17031-18e9-4b1c-9611-\
+f3d9890ed128"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"F", "[", "t", "]"}], "+", 
+     RowBox[{"m", " ", "R", " ", 
+      RowBox[{"Cos", "[", 
+       RowBox[{"\[Theta]", "[", "t", "]"}], "]"}], " ", 
+      RowBox[{
+       SuperscriptBox["\[Theta]", "\[Prime]\[Prime]",
+        MultilineFunction->None], "[", "t", "]"}]}]}], "\[Equal]", 
+    RowBox[{
+     RowBox[{"m", " ", "R", " ", 
+      RowBox[{"Sin", "[", 
+       RowBox[{"\[Theta]", "[", "t", "]"}], "]"}], " ", 
+      SuperscriptBox[
+       RowBox[{
+        SuperscriptBox["\[Theta]", "\[Prime]",
+         MultilineFunction->None], "[", "t", "]"}], "2"]}], "+", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"m", "+", "M"}], ")"}], " ", 
+      RowBox[{
+       SuperscriptBox["x", "\[Prime]\[Prime]",
+        MultilineFunction->None], "[", "t", "]"}]}]}]}], ",", 
+   RowBox[{
+    RowBox[{"m", " ", 
+     SuperscriptBox["R", "2"], " ", 
+     RowBox[{
+      SuperscriptBox["\[Theta]", "\[Prime]\[Prime]",
+       MultilineFunction->None], "[", "t", "]"}]}], "\[Equal]", 
+    RowBox[{"m", " ", "R", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"g", " ", 
+        RowBox[{"Sin", "[", 
+         RowBox[{"\[Theta]", "[", "t", "]"}], "]"}]}], "+", 
+       RowBox[{
+        RowBox[{"Cos", "[", 
+         RowBox[{"\[Theta]", "[", "t", "]"}], "]"}], " ", 
+        RowBox[{
+         SuperscriptBox["x", "\[Prime]\[Prime]",
+          MultilineFunction->None], "[", "t", "]"}]}]}], ")"}]}]}]}], 
+  "}"}]], "Output",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.},
+ CellChangeTimes->{
+  3.727507825880975*^9, 3.727510567607608*^9, {3.727515807903798*^9, 
+   3.727515822019594*^9}, 3.727531652167345*^9, 3.727536864755455*^9, {
+   3.72753713327299*^9, 3.727537160136153*^9}, 3.727537238015471*^9, {
+   3.72753750265844*^9, 3.727537519097238*^9}, 3.7277996837901373`*^9, 
+   3.727799776667831*^9, 3.7278000954505253`*^9, 3.7278006674780912`*^9, {
+   3.727801100069549*^9, 3.72780111357066*^9}, 3.7281418520136147`*^9, 
+   3.728143737314764*^9, 3.7281450734247923`*^9, 3.728150165866102*^9, 
+   3.728150624632201*^9, 3.728150921398067*^9, {3.728150958610723*^9, 
+   3.7281509853524523`*^9}, 3.728151277270349*^9, 3.728151329634006*^9, {
+   3.72815137635075*^9, 3.7281513830564413`*^9}, 
+   3.728151494163162*^9},ExpressionUUID->"021ef4a2-b2aa-4cf9-8914-\
+1ccf18619704"],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   StyleBox[
+    RowBox[{
+     RowBox[{"M", 
+      StyleBox[" ",
+       FontFamily->"Source Code Pro"], 
+      StyleBox["=",
+       FontFamily->"Source Code Pro"], 
+      StyleBox[" ",
+       FontFamily->"Source Code Pro"], 
+      StyleBox["0.2",
+       FontFamily->"Source Code Pro"]}], 
+     StyleBox[";",
+      FontFamily->"Source Code Pro"]}],
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox["\[IndentingNewLine]",
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"m", 
+      StyleBox[" ",
+       FontFamily->"Source Code Pro"], 
+      StyleBox["=",
+       FontFamily->"Source Code Pro"], 
+      StyleBox[
+       StyleBox[" ",
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro"], 
+      StyleBox["0.5",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"]}], 
+     StyleBox[";",
+      FontFamily->"Source Code Pro"]}],
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox["\[IndentingNewLine]",
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"R", 
+      StyleBox[" ",
+       FontFamily->"Source Code Pro"], 
+      StyleBox["=",
+       FontFamily->"Source Code Pro"], 
+      StyleBox[" ",
+       FontFamily->"Source Code Pro"], 
+      StyleBox["0.5",
+       FontFamily->"Source Code Pro"]}], 
+     StyleBox[";",
+      FontFamily->"Source Code Pro"]}],
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox["\[IndentingNewLine]",
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox[
+    StyleBox[
+     RowBox[{
+      RowBox[{"g", " ", "=", 
+       StyleBox[" ",
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"], 
+       StyleBox["9.8",
+        FontSize->16,
+        FontWeight->"Bold"]}], ";"}],
+     FontFamily->"Source Code Pro"],
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox["\[IndentingNewLine]",
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{
+      StyleBox["r",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      StyleBox["=",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      StyleBox[
+       RowBox[{
+        StyleBox[
+         StyleBox["0",
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro"], 
+        StyleBox[".",
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"], 
+        StyleBox["1",
+         FontSize->16,
+         FontWeight->"Bold"]}]]}], ";"}],
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox["\[IndentingNewLine]",
+    FontSize->16,
+    FontWeight->"Bold"], 
+   RowBox[{
+    StyleBox[
+     StyleBox[
+      RowBox[{"(", "*"}]],
+     FontSize->16,
+     FontWeight->"Bold"], 
+    StyleBox["\[IndentingNewLine]",
+     FontSize->16,
+     FontWeight->"Bold"], 
+    StyleBox[
+     RowBox[{
+      RowBox[{
+       StyleBox["StaMod",
+        FontFamily->"Source Code Pro"], 
+       StyleBox["=",
+        FontFamily->"Source Code Pro"], 
+       RowBox[{"StateSpaceModel", "[", 
+        RowBox[{"Eqns", ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"x", "[", "t", "]"}], ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"x", "'"}], "[", "t", "]"}], ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"\[Theta]", "[", "t", "]"}], ",", "0.05"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"\[Theta]", "'"}], "[", "t", "]"}], ",", "0"}], "}"}]}],
+           "}"}], ",", 
+         RowBox[{"F", "[", "t", "]"}], ",", 
+         RowBox[{"{", "}"}], ",", "t"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      
+      RowBox[{"gains", "=", 
+       RowBox[{
+        RowBox[{"LQRegulatorGains", "[", 
+         RowBox[{
+          RowBox[{"N", "[", 
+           StyleBox[
+            RowBox[{
+             StyleBox["S",
+              FontSize->16,
+              FontWeight->"Bold"], "taMod"}]], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"DiagonalMatrix", "[", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "10", ",", "10", ",", "100"}], "}"}], "]"}], 
+            ",", 
+            RowBox[{"{", 
+             RowBox[{"{", "1", "}"}], "}"}]}], "}"}]}], "]"}], "//", 
+        "First"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"ctrlF", "=", 
+       RowBox[{"-", 
+        RowBox[{"gains", ".", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"x", "[", "t", "]"}], ",", 
+           RowBox[{
+            RowBox[{"x", "'"}], "[", "t", "]"}], ",", 
+           RowBox[{"\[Theta]", "[", "t", "]"}], ",", 
+           RowBox[{
+            RowBox[{"\[Theta]", "'"}], "[", "t", "]"}]}], "}"}]}]}]}], ";"}],
+     FontSize->16,
+     FontWeight->"Bold"], 
+    StyleBox["\[IndentingNewLine]",
+     FontSize->16,
+     FontWeight->"Bold"], 
+    StyleBox[
+     RowBox[{
+      StyleBox["*",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      StyleBox[")",
+       FontSize->16,
+       FontWeight->"Bold"]}]]}], 
+   StyleBox["\[IndentingNewLine]",
+    FontSize->16,
+    FontWeight->"Bold"], 
+   StyleBox[
+    RowBox[{
+     RowBox[{"normF", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "15"}], 
+        RowBox[{"\[Theta]", "[", "t", "]"}]}], "-", 
+       RowBox[{
+        RowBox[{"\[Theta]", "'"}], "[", "t", "]"}]}]}], ";"}],
+    FontSize->16,
+    FontWeight->"Bold"], "\n", 
+   StyleBox[
+    RowBox[{"simu", " ", "=", " ", 
+     RowBox[{"NDSolve", "[", 
+      RowBox[{
+       RowBox[{
+        StyleBox[
+         RowBox[{
+          StyleBox[
+           StyleBox[
+            StyleBox["J",
+             FontFamily->"Source Code Pro",
+             FontSize->16,
+             FontWeight->"Bold"],
+            FontFamily->"Source Code Pro",
+            FontSize->16,
+            FontWeight->"Bold"],
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"], "oin"}]], 
+        StyleBox[
+         StyleBox[
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox["[",
+                 FontFamily->"Source Code Pro",
+                 FontSize->16,
+                 FontWeight->"Bold"],
+                FontFamily->"Source Code Pro",
+                FontSize->16,
+                FontWeight->"Bold"],
+               FontFamily->"Source Code Pro",
+               FontSize->16,
+               FontWeight->"Bold"],
+              FontFamily->"Source Code Pro",
+              FontSize->16,
+              FontWeight->"Bold"],
+             FontFamily->"Source Code Pro",
+             FontSize->16,
+             FontWeight->"Bold"],
+            FontFamily->"Source Code Pro",
+            FontSize->16,
+            FontWeight->"Bold"],
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"], 
+        RowBox[{
+         RowBox[{
+          RowBox[{
+           StyleBox["Eqns",
+            FontFamily->"Source Code Pro",
+            FontSize->16,
+            FontWeight->"Bold"], 
+           StyleBox[
+            RowBox[{"/", "."}],
+            FontFamily->"Source Code Pro",
+            FontSize->16,
+            FontWeight->"Bold"], 
+           RowBox[{
+            StyleBox["{",
+             FontFamily->"Source Code Pro",
+             FontSize->16,
+             FontWeight->"Bold"], 
+            RowBox[{
+             StyleBox[
+              RowBox[{
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox[
+                    StyleBox["F",
+                    FontFamily->"Source Code Pro",
+                    FontSize->16,
+                    FontWeight->"Bold"],
+                    FontFamily->"Source Code Pro",
+                    FontSize->16,
+                    FontWeight->"Bold"],
+                   FontFamily->"Source Code Pro",
+                   FontSize->16,
+                   FontWeight->"Bold"],
+                  FontFamily->"Source Code Pro",
+                  FontSize->16,
+                  FontWeight->"Bold"],
+                 FontFamily->"Source Code Pro",
+                 FontSize->16,
+                 FontWeight->"Bold"],
+                FontFamily->"Source Code Pro",
+                FontSize->16,
+                FontWeight->"Bold"], 
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox[
+                    StyleBox["[",
+                    FontFamily->"Source Code Pro",
+                    FontSize->16,
+                    FontWeight->"Bold"],
+                    FontFamily->"Source Code Pro",
+                    FontSize->16,
+                    FontWeight->"Bold"],
+                   FontFamily->"Source Code Pro",
+                   FontSize->16,
+                   FontWeight->"Bold"],
+                  FontFamily->"Source Code Pro",
+                  FontSize->16,
+                  FontWeight->"Bold"],
+                 FontFamily->"Source Code Pro",
+                 FontSize->16,
+                 FontWeight->"Bold"],
+                FontFamily->"Source Code Pro",
+                FontSize->16,
+                FontWeight->"Bold"], 
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox[
+                    StyleBox[
+                    StyleBox[
+                    StyleBox["t",
+                    FontFamily->"Source Code Pro",
+                    FontSize->16,
+                    FontWeight->"Bold"],
+                    FontFamily->"Source Code Pro",
+                    FontSize->16,
+                    FontWeight->"Bold"],
+                    FontFamily->"Source Code Pro",
+                    FontSize->16,
+                    FontWeight->"Bold"],
+                    FontFamily->"Source Code Pro",
+                    FontSize->16,
+                    FontWeight->"Bold"],
+                   FontFamily->"Source Code Pro",
+                   FontSize->16,
+                   FontWeight->"Bold"],
+                  FontFamily->"Source Code Pro",
+                  FontSize->16,
+                  FontWeight->"Bold"],
+                 FontFamily->"Source Code Pro",
+                 FontSize->16,
+                 FontWeight->"Bold"],
+                FontFamily->"Source Code Pro",
+                FontSize->16,
+                FontWeight->"Bold"], 
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox["]",
+                   FontFamily->"Source Code Pro",
+                   FontSize->16,
+                   FontWeight->"Bold"],
+                  FontFamily->"Source Code Pro",
+                  FontSize->16,
+                  FontWeight->"Bold"],
+                 FontFamily->"Source Code Pro",
+                 FontSize->16,
+                 FontWeight->"Bold"],
+                FontFamily->"Source Code Pro",
+                FontSize->16,
+                FontWeight->"Bold"]}],
+              FontFamily->"Source Code Pro",
+              FontSize->16,
+              FontWeight->"Bold"], 
+             StyleBox[
+              StyleBox[
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox["\[Rule]",
+                   FontFamily->"Source Code Pro",
+                   FontSize->16,
+                   FontWeight->"Bold"],
+                  FontFamily->"Source Code Pro",
+                  FontSize->16,
+                  FontWeight->"Bold"],
+                 FontFamily->"Source Code Pro",
+                 FontSize->16,
+                 FontWeight->"Bold"],
+                FontFamily->"Source Code Pro",
+                FontSize->16,
+                FontWeight->"Bold"],
+               FontFamily->"Source Code Pro",
+               FontSize->16,
+               FontWeight->"Bold"],
+              FontFamily->"Source Code Pro",
+              FontSize->16,
+              FontWeight->"Bold"], "normF"}], "}"}]}], "//", "Flatten"}], 
+         StyleBox[",",
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"], 
+         StyleBox[
+          RowBox[{
+           StyleBox[
+            StyleBox[
+             StyleBox[
+              StyleBox[
+               StyleBox["{",
+                FontFamily->"Source Code Pro",
+                FontSize->16,
+                FontWeight->"Bold"],
+               FontFamily->"Source Code Pro",
+               FontSize->16,
+               FontWeight->"Bold"],
+              FontFamily->"Source Code Pro",
+              FontSize->16,
+              FontWeight->"Bold"],
+             FontFamily->"Source Code Pro",
+             FontSize->16,
+             FontWeight->"Bold"],
+            FontFamily->"Source Code Pro",
+            FontSize->16,
+            FontWeight->"Bold"], 
+           RowBox[{
+            RowBox[{
+             RowBox[{"x", "[", "0", "]"}], "\[Equal]", "0"}], ",", 
+            RowBox[{
+             RowBox[{"\[Theta]", "[", "0", "]"}], "\[Equal]", 
+             StyleBox[
+              RowBox[{"0", 
+               StyleBox[
+                StyleBox[
+                 StyleBox[
+                  StyleBox[
+                   StyleBox[".",
+                    FontFamily->"Source Code Pro",
+                    FontSize->16,
+                    FontWeight->"Bold"],
+                   FontFamily->"Source Code Pro",
+                   FontSize->16,
+                   FontWeight->"Bold"],
+                  FontFamily->"Source Code Pro",
+                  FontSize->16,
+                  FontWeight->"Bold"],
+                 FontFamily->"Source Code Pro",
+                 FontSize->16,
+                 FontWeight->"Bold"],
+                FontFamily->"Source Code Pro",
+                FontSize->16,
+                FontWeight->"Bold"], "05"}]]}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"x", "'"}], "[", "0", "]"}], "\[Equal]", "0"}], ",", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"\[Theta]", "'"}], "[", "0", "]"}], "\[Equal]", "0"}]}],
+            "}"}],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"]}], 
+        StyleBox[
+         StyleBox[
+          StyleBox[
+           StyleBox["]",
+            FontFamily->"Source Code Pro",
+            FontSize->16,
+            FontWeight->"Bold"],
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"]}], 
+       StyleBox[",",
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"], 
+       StyleBox[
+        RowBox[{"{", 
+         RowBox[{"x", ",", "\[Theta]"}], "}"}],
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"], 
+       StyleBox[",",
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"], 
+       StyleBox[
+        RowBox[{"{", 
+         RowBox[{"t", ",", "0", ",", "15"}], "}"}],
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"]}], 
+      StyleBox["]",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"]}]}],
+    FontSize->16,
+    FontWeight->"Bold"]}]}]], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.},
+ CellChangeTimes->{{3.7275045588097*^9, 3.727504702106745*^9}, {
+   3.72750474261065*^9, 3.727504843792543*^9}, {3.727505055799231*^9, 
+   3.7275050803061132`*^9}, {3.727505195321653*^9, 3.7275052733264437`*^9}, 
+   3.7275054689288683`*^9, {3.72750760542773*^9, 3.7275076451462812`*^9}, {
+   3.727507736431759*^9, 3.727507743995811*^9}, {3.727507867381703*^9, 
+   3.727507883381858*^9}, {3.727508072653555*^9, 3.727508113094488*^9}, {
+   3.727508482699832*^9, 3.727508485232876*^9}, {3.727509427509091*^9, 
+   3.727509432818631*^9}, {3.72750997455175*^9, 3.727509977397771*^9}, {
+   3.727510067950933*^9, 3.727510137963037*^9}, {3.727510171632235*^9, 
+   3.727510262407415*^9}, {3.727510292965939*^9, 3.727510345273965*^9}, {
+   3.727510393710486*^9, 3.727510482371746*^9}, {3.727510514379095*^9, 
+   3.727510514711172*^9}, {3.727510610275647*^9, 3.727510624262641*^9}, {
+   3.72751079281777*^9, 3.72751087253471*^9}, {3.7275112060185423`*^9, 
+   3.7275112285568123`*^9}, {3.7275112827725058`*^9, 
+   3.7275113182848988`*^9}, {3.7275114447352037`*^9, 3.727511478176428*^9}, {
+   3.727511572635646*^9, 3.727511587897449*^9}, {3.727512399712409*^9, 
+   3.7275124008196774`*^9}, {3.72751247266012*^9, 3.727512517282921*^9}, {
+   3.7275126305261383`*^9, 3.727512664307625*^9}, {3.727512723500798*^9, 
+   3.727512763017994*^9}, {3.72751292290165*^9, 3.7275129381642303`*^9}, {
+   3.72751312804338*^9, 3.727513254474555*^9}, {3.727513302810581*^9, 
+   3.727513306572514*^9}, {3.7275146166066437`*^9, 3.727514701785696*^9}, {
+   3.727514738947652*^9, 3.727514739823319*^9}, {3.727514830981102*^9, 
+   3.7275148969933558`*^9}, {3.727514945396922*^9, 3.727514946759425*^9}, 
+   3.727531652178998*^9, {3.727536818677187*^9, 3.7275368428610983`*^9}, {
+   3.727536985415978*^9, 3.727537002395941*^9}, {3.72753705914469*^9, 
+   3.727537116765769*^9}, {3.727537680835992*^9, 3.7275377367152843`*^9}, {
+   3.727537969145835*^9, 3.727537989899755*^9}, {3.727538023091709*^9, 
+   3.727538084117485*^9}, {3.7275383982776127`*^9, 3.727538398574369*^9}, {
+   3.72753845901892*^9, 3.727538459496913*^9}, {3.727538501358077*^9, 
+   3.7275385015579367`*^9}, {3.7275385541525517`*^9, 3.727538594527026*^9}, {
+   3.72753867731075*^9, 3.727538677470113*^9}, {3.727538735687611*^9, 
+   3.7275387416121902`*^9}, {3.72753880011029*^9, 3.727538829682736*^9}, {
+   3.7275388735474577`*^9, 3.7275388737953053`*^9}, {3.727538908374192*^9, 
+   3.727538911679323*^9}, {3.727539132679164*^9, 3.7275391330753098`*^9}, {
+   3.72753919768073*^9, 3.727539198160034*^9}, {3.7275392394968643`*^9, 
+   3.727539239559309*^9}, 3.727539310504326*^9, {3.727539341476357*^9, 
+   3.727539368528182*^9}, {3.727539427563483*^9, 3.72753948648542*^9}, {
+   3.727539538685636*^9, 3.72753972819457*^9}, {3.727539840629037*^9, 
+   3.727539859849633*^9}, {3.7275398965914497`*^9, 3.727539896749572*^9}, {
+   3.7275399383171177`*^9, 3.72753996949095*^9}, {3.727540000505088*^9, 
+   3.727540045139371*^9}, {3.72754010693368*^9, 3.727540107320109*^9}, {
+   3.727540157112792*^9, 3.727540157635872*^9}, {3.727540190058807*^9, 
+   3.727540190201898*^9}, {3.727540396500782*^9, 3.727540471437693*^9}, {
+   3.727540568373763*^9, 3.7275405797437983`*^9}, {3.727541410572475*^9, 
+   3.727541649224139*^9}, {3.727541700982862*^9, 3.7275418506694*^9}, {
+   3.7275418866598883`*^9, 3.727541893160462*^9}, {3.727541989078806*^9, 
+   3.7275420146860647`*^9}, {3.727542067568865*^9, 3.727542068431916*^9}, {
+   3.727542160413109*^9, 3.7275421604771976`*^9}, {3.727542235166553*^9, 
+   3.7275423179373817`*^9}, {3.727542387407095*^9, 3.727542387447747*^9}, {
+   3.727542436178801*^9, 3.7275424640451193`*^9}, {3.727543846348977*^9, 
+   3.7275438494599457`*^9}, {3.727543926024618*^9, 3.727543930250906*^9}, {
+   3.727800121239378*^9, 3.727800124238558*^9}, {3.7278002989098988`*^9, 
+   3.727800300686146*^9}, {3.727800832487505*^9, 3.727800835933097*^9}, {
+   3.727803573089262*^9, 3.727803594660377*^9}, {3.727804188816584*^9, 
+   3.727804191905076*^9}, {3.728141837754455*^9, 3.7281418409196568`*^9}, {
+   3.728143718070627*^9, 3.728143720889777*^9}, {3.728144399724867*^9, 
+   3.728144402294166*^9}, {3.728144810937336*^9, 3.728144824127645*^9}, 
+   3.728145101069048*^9, 3.728150098097032*^9, {3.728150613084154*^9, 
+   3.728150642441024*^9}, {3.7281507536152773`*^9, 3.728150756263291*^9}, {
+   3.728150830654194*^9, 3.728150883020466*^9}, {3.72815093034616*^9, 
+   3.728150947630972*^9}, 3.728151320733366*^9, 3.7281513550611134`*^9, 
+   3.728151420523773*^9, 3.728151581283263*^9, {3.7282265684254017`*^9, 
+   3.728226576741309*^9}},
+ EmphasizeSyntaxErrors->
+  True,ExpressionUUID->"a6fc664a-8b1c-42d2-ade7-e5e018f59819"],
+
+Cell[BoxData[{
+ StyleBox[
+  RowBox[{
+   StyleBox["Plot",
+    FontFamily->"Source Code Pro"], 
+   StyleBox["[",
+    FontFamily->"Source Code Pro"], 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      StyleBox["(",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      RowBox[{
+       StyleBox["\[Theta]",
+        FontFamily->"Source Code Pro"], 
+       StyleBox[
+        StyleBox[
+         RowBox[{
+          StyleBox["/",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"], 
+          StyleBox[
+           StyleBox[".",
+            FontFamily->"Source Code Pro",
+            FontSize->16,
+            FontWeight->"Bold"],
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"]}],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro"], 
+       RowBox[{"Flatten", "[", 
+        StyleBox[
+         RowBox[{"si", 
+          StyleBox[
+           StyleBox[
+            StyleBox[
+             StyleBox["m",
+              FontFamily->"Source Code Pro",
+              FontSize->16,
+              FontWeight->"Bold"],
+             FontFamily->"Source Code Pro",
+             FontSize->16,
+             FontWeight->"Bold"],
+            FontFamily->"Source Code Pro",
+            FontSize->16,
+            FontWeight->"Bold"],
+           FontFamily->"Source Code Pro"], 
+          StyleBox["u",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"]}]], 
+        StyleBox["]",
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"]}]}], 
+      StyleBox[")",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"]}], 
+     StyleBox["[",
+      FontFamily->"Source Code Pro",
+      FontSize->16,
+      FontWeight->"Bold"], 
+     StyleBox["t",
+      FontFamily->"Source Code Pro",
+      FontSize->16,
+      FontWeight->"Bold"], 
+     StyleBox["]",
+      FontFamily->"Source Code Pro",
+      FontSize->16,
+      FontWeight->"Bold"]}], 
+    StyleBox[
+     StyleBox[
+      StyleBox[",",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"],
+      FontFamily->"Source Code Pro",
+      FontSize->16,
+      FontWeight->"Bold"],
+     FontFamily->"Source Code Pro"], 
+    RowBox[{
+     StyleBox[
+      StyleBox[
+       StyleBox["{",
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"],
+      FontFamily->"Source Code Pro"], 
+     RowBox[{
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox["t",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro"], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox[",",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro"], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox["0",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro"], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox[",",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro"], "15"}], 
+     StyleBox[
+      StyleBox["}",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"],
+      FontFamily->"Source Code Pro"]}]}], 
+   StyleBox["]",
+    FontFamily->"Source Code Pro"]}],
+  FontSize->16,
+  FontWeight->"Bold"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   StyleBox["Plot",
+    FontFamily->"Source Code Pro"], 
+   StyleBox["[",
+    FontFamily->"Source Code Pro"], 
+   RowBox[{
+    RowBox[{
+     RowBox[{
+      StyleBox["(",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"], 
+      RowBox[{
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox["x",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro"], 
+       StyleBox[
+        StyleBox[
+         RowBox[{"/", "."}],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro"], 
+       RowBox[{"Flatten", "[", 
+        StyleBox[
+         RowBox[{
+          StyleBox[
+           StyleBox["sim",
+            FontFamily->"Source Code Pro"],
+           FontSize->16,
+           FontWeight->"Bold"], "u"}],
+         FontFamily->"Source Code Pro"], 
+        StyleBox["]",
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"]}]}], 
+      StyleBox[")",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"]}], 
+     StyleBox["[",
+      FontFamily->"Source Code Pro",
+      FontSize->16,
+      FontWeight->"Bold"], 
+     StyleBox["t",
+      FontFamily->"Source Code Pro",
+      FontSize->16,
+      FontWeight->"Bold"], 
+     StyleBox["]",
+      FontFamily->"Source Code Pro",
+      FontSize->16,
+      FontWeight->"Bold"]}], 
+    StyleBox[
+     StyleBox[
+      StyleBox[",",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"],
+      FontFamily->"Source Code Pro",
+      FontSize->16,
+      FontWeight->"Bold"],
+     FontFamily->"Source Code Pro"], 
+    RowBox[{
+     StyleBox[
+      StyleBox[
+       StyleBox["{",
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"],
+      FontFamily->"Source Code Pro"], 
+     RowBox[{
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox["t",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro"], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox[",",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro"], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox["0",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro"], 
+      StyleBox[
+       StyleBox[
+        StyleBox[
+         StyleBox[
+          StyleBox[",",
+           FontFamily->"Source Code Pro",
+           FontSize->16,
+           FontWeight->"Bold"],
+          FontFamily->"Source Code Pro",
+          FontSize->16,
+          FontWeight->"Bold"],
+         FontFamily->"Source Code Pro",
+         FontSize->16,
+         FontWeight->"Bold"],
+        FontFamily->"Source Code Pro",
+        FontSize->16,
+        FontWeight->"Bold"],
+       FontFamily->"Source Code Pro"], "15"}], 
+     StyleBox[
+      StyleBox["}",
+       FontFamily->"Source Code Pro",
+       FontSize->16,
+       FontWeight->"Bold"],
+      FontFamily->"Source Code Pro"]}]}], 
+   StyleBox["]",
+    FontFamily->"Source Code Pro"]}],
+  FontSize->16,
+  FontWeight->"Bold"], "\n", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"coordT", "[", "th_", "]"}], ":=", " ", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"-", "R"}], " ", 
+       RowBox[{"Sin", "[", "th", "]"}]}], ",", 
+      RowBox[{"R", " ", 
+       RowBox[{"Cos", "[", "th", "]"}]}]}], "}"}]}], ";"}],
+  FontSize->16,
+  FontWeight->"Bold"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"coordX", "[", "t_", "]"}], ":=", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"x", "[", "t", "]"}], "/.", 
+       RowBox[{"simu", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], ",", "r"}], "}"}]}], ";"}],
+  FontSize->16,
+  FontWeight->"Bold"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{
+   RowBox[{
+    RowBox[{"c", "[", "t_", "]"}], ":=", 
+    RowBox[{
+     RowBox[{"coordT", "[", 
+      RowBox[{
+       RowBox[{"\[Theta]", "[", "t", "]"}], "/.", 
+       RowBox[{"simu", "[", 
+        RowBox[{"[", "1", "]"}], "]"}]}], "]"}], "+", 
+     RowBox[{"coordX", "[", "t", "]"}]}]}], ";"}],
+  FontSize->16,
+  FontWeight->"Bold"], "\[IndentingNewLine]", 
+ StyleBox[
+  RowBox[{"Animate", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"Show", "[", 
+     RowBox[{
+      RowBox[{"Graphics", "[", 
+       RowBox[{"Line", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"coordX", "[", "t", "]"}], ",", 
+          RowBox[{"c", "[", "t", "]"}]}], "}"}], "]"}], "]"}], ",", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"PointSize", "[", "0.03", "]"}], ",", 
+         RowBox[{"Point", "[", 
+          RowBox[{"c", "[", "t", "]"}], "]"}]}], "}"}], "]"}], ",", 
+      RowBox[{"Graphics", "[", 
+       RowBox[{"{", 
+        RowBox[{"Circle", "[", 
+         RowBox[{
+          RowBox[{"coordX", "[", "t", "]"}], ",", " ", "0.1"}], "]"}], "}"}], 
+       "]"}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "0.8"}], ",", "0.8"}], "}"}], ",", " ", 
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0.8"}], "}"}]}], "}"}]}], ",", "    ", 
+      RowBox[{"AxesOrigin", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "0"}], "}"}]}], ",", " ", 
+      RowBox[{"AxesLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "y"}], "}"}]}], ",", " ", 
+      RowBox[{"Axes", "\[Rule]", "True"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"t", ",", "0", ",", "15"}], "}"}]}], "]"}],
+  FontSize->16,
+  FontWeight->"Bold"]}], "Input",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.},
+ CellChangeTimes->{{3.7275045588097*^9, 3.727504702106745*^9}, {
+   3.72750474261065*^9, 3.727504843792543*^9}, {3.727505055799231*^9, 
+   3.7275050803061132`*^9}, {3.727505195321653*^9, 3.7275052733264437`*^9}, 
+   3.7275054689288683`*^9, {3.72750760542773*^9, 3.7275076451462812`*^9}, {
+   3.727507736431759*^9, 3.727507743995811*^9}, {3.727507867381703*^9, 
+   3.727507883381858*^9}, {3.727508072653555*^9, 3.727508113094488*^9}, {
+   3.727508482699832*^9, 3.727508485232876*^9}, {3.727509427509091*^9, 
+   3.727509432818631*^9}, {3.72750997455175*^9, 3.727509977397771*^9}, {
+   3.727510067950933*^9, 3.727510137963037*^9}, {3.727510171632235*^9, 
+   3.727510262407415*^9}, {3.727510292965939*^9, 3.727510345273965*^9}, {
+   3.727510393710486*^9, 3.727510482371746*^9}, {3.727510514379095*^9, 
+   3.727510514711172*^9}, {3.727510610275647*^9, 3.727510624262641*^9}, {
+   3.72751079281777*^9, 3.72751087253471*^9}, {3.7275112060185423`*^9, 
+   3.7275112285568123`*^9}, {3.7275112827725058`*^9, 
+   3.7275113182848988`*^9}, {3.7275114447352037`*^9, 3.727511478176428*^9}, {
+   3.727511572635646*^9, 3.727511587897449*^9}, {3.727512399712409*^9, 
+   3.7275124008196774`*^9}, {3.72751247266012*^9, 3.727512517282921*^9}, {
+   3.7275126305261383`*^9, 3.727512664307625*^9}, {3.727512723500798*^9, 
+   3.727512763017994*^9}, {3.72751292290165*^9, 3.7275129381642303`*^9}, {
+   3.72751312804338*^9, 3.727513254474555*^9}, {3.727513302810581*^9, 
+   3.727513306572514*^9}, {3.7275146166066437`*^9, 3.727514701785696*^9}, {
+   3.727514738947652*^9, 3.727514739823319*^9}, {3.727514830981102*^9, 
+   3.7275148969933558`*^9}, {3.727514945396922*^9, 3.727514946759425*^9}, 
+   3.727531652178998*^9, {3.727536818677187*^9, 3.7275368428610983`*^9}, {
+   3.727536985415978*^9, 3.727537002395941*^9}, {3.72753705914469*^9, 
+   3.727537116765769*^9}, {3.727537680835992*^9, 3.7275377367152843`*^9}, {
+   3.727537969145835*^9, 3.727537989899755*^9}, {3.727538023091709*^9, 
+   3.727538084117485*^9}, {3.7275383982776127`*^9, 3.727538398574369*^9}, {
+   3.72753845901892*^9, 3.727538459496913*^9}, {3.727538501358077*^9, 
+   3.7275385015579367`*^9}, {3.7275385541525517`*^9, 3.727538594527026*^9}, {
+   3.72753867731075*^9, 3.727538677470113*^9}, {3.727538735687611*^9, 
+   3.7275387416121902`*^9}, {3.72753880011029*^9, 3.727538829682736*^9}, {
+   3.7275388735474577`*^9, 3.7275388737953053`*^9}, {3.727538908374192*^9, 
+   3.727538911679323*^9}, {3.727539132679164*^9, 3.7275391330753098`*^9}, {
+   3.72753919768073*^9, 3.727539198160034*^9}, {3.7275392394968643`*^9, 
+   3.727539239559309*^9}, 3.727539310504326*^9, {3.727539341476357*^9, 
+   3.727539368528182*^9}, {3.727539427563483*^9, 3.72753948648542*^9}, {
+   3.727539538685636*^9, 3.72753972819457*^9}, {3.727539840629037*^9, 
+   3.727539859849633*^9}, {3.7275398965914497`*^9, 3.727539896749572*^9}, {
+   3.7275399383171177`*^9, 3.72753996949095*^9}, {3.727540000505088*^9, 
+   3.727540045139371*^9}, {3.72754010693368*^9, 3.727540107320109*^9}, {
+   3.727540157112792*^9, 3.727540157635872*^9}, {3.727540190058807*^9, 
+   3.727540190201898*^9}, {3.727540396500782*^9, 3.727540471437693*^9}, {
+   3.727540568373763*^9, 3.7275405797437983`*^9}, {3.727541410572475*^9, 
+   3.727541649224139*^9}, {3.727541700982862*^9, 3.7275418506694*^9}, {
+   3.7275418866598883`*^9, 3.727541893160462*^9}, {3.727541989078806*^9, 
+   3.7275420146860647`*^9}, {3.727542067568865*^9, 3.727542068431916*^9}, {
+   3.727542160413109*^9, 3.7275421604771976`*^9}, {3.727542235166553*^9, 
+   3.7275423179373817`*^9}, {3.727542387407095*^9, 3.727542387447747*^9}, {
+   3.727542436178801*^9, 3.7275424640451193`*^9}, {3.727543846348977*^9, 
+   3.7275438494599457`*^9}, {3.727543926024618*^9, 3.727543930250906*^9}, {
+   3.727800121239378*^9, 3.727800124238558*^9}, {3.7278002989098988`*^9, 
+   3.727800300686146*^9}, {3.727800832487505*^9, 3.727800835933097*^9}, {
+   3.727803573089262*^9, 3.727803594660377*^9}, {3.727804188816584*^9, 
+   3.727804191905076*^9}, {3.728141837754455*^9, 3.7281418409196568`*^9}, {
+   3.728143718070627*^9, 3.728143720889777*^9}, {3.728144399724867*^9, 
+   3.728144402294166*^9}, {3.728144810937336*^9, 3.728144824127645*^9}, 
+   3.728145101069048*^9, 3.728150098097032*^9, {3.728150613084154*^9, 
+   3.728150642441024*^9}, {3.7281507536152773`*^9, 3.728150756263291*^9}, {
+   3.728150830654194*^9, 3.728150883020466*^9}, {3.72815093034616*^9, 
+   3.728150947630972*^9}, 3.728151320733366*^9, 3.7281513550611134`*^9},
+ EmphasizeSyntaxErrors->
+  True,ExpressionUUID->"2ff1a467-8fd2-4a61-808f-0a269e1acdb1"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["StaMod"], "Input",
+ CellChangeTimes->{{3.728151517317148*^9, 
+  3.728151522816142*^9}},ExpressionUUID->"639ef608-3de9-42fe-9f8b-\
+0ede2cba6ef8"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "0.`","1.`","0.`","0.`","0.`","0.`","0.`","24.287132897373446`","0.`",
+   "4.968969810112748`","0.`","0.`","0.`","1.`","0.`","0.`","0.`",
+   "68.0890657147391`","0.`","9.925519783489666`",InterpretationBox[
+   "\[InvisibleSpace]", None],{
+   StateSpaceModel, {
+    False, False, {
+     False, False}}, {$CellContext`stname1, $CellContext`stname2, \
+$CellContext`stname3, $CellContext`stname4}, {{
+     Control`CommonDump`$DUMMY$}, {}, {
+     Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$, 
+      Control`CommonDump`$DUMMY$, Control`CommonDump`$DUMMY$}}, 
+    Identity, {{}, {}}, 1, 0, 4, 1, {}, {False, False}, False, Automatic, 
+    None, {",", 
+     RowBox[{"{", 
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"x", "[", "t", "]"}], ",", "0"}], "}"}], ",", 
+         SubscriptBox["\[FormalX]", "1"], ",", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"\[Theta]", "[", "t", "]"}], ",", "0"}], "}"}], ",", 
+         SubscriptBox["\[FormalX]", "2"]}], "}"}], ",", 
+     RowBox[{"{", 
+       RowBox[{"{", 
+         RowBox[{
+           RowBox[{"F", "[", "t", "]"}], ",", "0"}], "}"}], "}"}], ",", 
+     "Automatic", ",", "t"}},{}},
+  "StateSpaceModelFull",
+  BaseStyle->{NumberMarks -> False},
+  DisplayFunction->(TagBox[
+    SubsuperscriptBox[
+     RowBox[{"(", 
+       GridBox[{{#, #2, #3, #4, #5}, {#6, #7, #8, #9, #10}, {#11, #12, #13, \
+#14, #15}, {#16, #17, #18, #19, #20}}, AllowedDimensions -> {5, 4}, 
+        AutoDelete -> False, AllowScriptLevelChange -> False, 
+        ColumnAlignments -> {Center}, BaseStyle -> {Deployed -> False}, 
+        GridBoxItemStyle -> {}, 
+        GridBoxDividers -> {"Rows" -> {False, False, False, False, 
+            Directive[
+             GrayLevel[0], 
+             GrayLevel[0.6]], {False}, False}, 
+          "Columns" -> {False, False, False, False, 
+            Directive[
+             GrayLevel[0], 
+             GrayLevel[0.6]], {False}, False}}, 
+        GridBoxBackground -> {"Rows" -> {{
+             GrayLevel[1], 
+             RGBColor[0.8, 0.9, 0.9]}}}], ")"}], #21, 
+     ButtonBox[
+      GraphicsBox[{
+        RGBColor[0.8, 0.85, 0.85], 
+        EdgeForm[
+         RGBColor[0.6, 0.7, 0.7]], 
+        RectangleBox[{0, 0}, RoundingRadius -> Offset[2.5]], 
+        InsetBox[
+         StyleBox[
+         "\[ScriptCapitalS]", Control`NonlinearModelsDump`LineColor -> 
+          GrayLevel[0], Control`NonlinearModelsDump`FrontFaceColor -> 
+          GrayLevel[0], Control`NonlinearModelsDump`BackFaceColor -> 
+          GrayLevel[0], GraphicsColor -> GrayLevel[0], FontSize -> 12, 
+          FontColor -> GrayLevel[0]], {0.5, 0.5}]}, ImageSize -> 20], 
+      ButtonFunction :> Control`Typesetting`SystemsModelTypesetToggle[
+        ButtonNotebook[], FE`CMObj], Evaluator -> Automatic, Appearance -> 
+      None], MultilineFunction -> None], 
+    EventHandlerTag[{"MouseEntered" :> {FE`CMObj = MathLink`CallFrontEnd[
+          FrontEnd`Value[
+           FEPrivate`Self[]]]}, PassEventsDown -> True, PassEventsUp -> 
+      True}]]& ),
+  InterpretationFunction->(RowBox[{"StateSpaceModel", "[", 
+     RowBox[{"{", 
+       RowBox[{"{", 
+         RowBox[{"{", 
+           TemplateSlotSequence[{1, 4}, ","], "}"}], ",", 
+         RowBox[{"{", 
+           TemplateSlotSequence[{6, 9}, ","], "}"}], ",", 
+         RowBox[{"{", 
+           TemplateSlotSequence[{11, 14}, ","], "}"}], ",", 
+         RowBox[{"{", 
+           TemplateSlotSequence[{16, 19}, ","], "}"}], "}"}], ",", 
+       RowBox[{"{", 
+         RowBox[{"{", 
+           TemplateSlotSequence[{5, 5}, ","], "}"}], ",", 
+         RowBox[{"{", 
+           TemplateSlotSequence[{10, 10}, ","], "}"}], ",", 
+         RowBox[{"{", 
+           TemplateSlotSequence[{15, 15}, ","], "}"}], ",", 
+         RowBox[{"{", 
+           TemplateSlotSequence[{20, 20}, ","], "}"}], "}"}], ",", 
+       RowBox[{"{", "}"}], ",", 
+       RowBox[{"{", "}"}], "}"}], ",", 
+     RowBox[{"{", 
+       RowBox[{
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"x", "[", "t", "]"}], ",", "0"}], "}"}], ",", 
+         SubscriptBox["\[FormalX]", "1"], ",", 
+         RowBox[{"{", 
+           RowBox[{
+             RowBox[{"\[Theta]", "[", "t", "]"}], ",", "0"}], "}"}], ",", 
+         SubscriptBox["\[FormalX]", "2"]}], "}"}], ",", 
+     RowBox[{"{", 
+       RowBox[{"{", 
+         RowBox[{
+           RowBox[{"F", "[", "t", "]"}], ",", "0"}], "}"}], "}"}], ",", 
+     "Automatic", ",", "t", ",", "SamplingPeriod", "->", 
+     RowBox[{#21}], ",", "SystemsModelLabels", "->", "None", "]"}]& ),
+  Tooltip->StateSpaceModel]], "Output",
+ CellChangeTimes->{{3.728151518637165*^9, 
+  3.728151523420023*^9}},ExpressionUUID->"506a0cf7-9c9e-40d7-92a4-\
+733739d02f40"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["normF"], "Input",
+ CellChangeTimes->{{3.7281515553477182`*^9, 
+  3.7281515562867537`*^9}},ExpressionUUID->"61b16270-3be7-44a9-b584-\
+fbea81de8f61"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"-", "15"}], " ", 
+   RowBox[{"\[Theta]", "[", "t", "]"}]}], "-", 
+  RowBox[{
+   SuperscriptBox["\[Theta]", "\[Prime]",
+    MultilineFunction->None], "[", "t", "]"}]}]], "Output",
+ CellChangeTimes->{
+  3.728151556815428*^9},ExpressionUUID->"e4da6498-d568-4209-9cf0-\
+30d15dabe4ea"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"simu", "[", 
+   RowBox[{"[", 
+    RowBox[{"1", ",", "2", ",", "2"}], "]"}], "]"}], "[", "2", "]"}]], "Input",\
+
+ CellChangeTimes->{{3.728151668498045*^9, 
+  3.7281517079098473`*^9}},ExpressionUUID->"c2ee853c-dfa6-47a6-8680-\
+45ac5c1c4c3f"],
+
+Cell[BoxData[
+ RowBox[{"-", "7.920453553117478`*^-7"}]], "Output",
+ CellChangeTimes->{{3.728151674344858*^9, 
+  3.728151708260721*^9}},ExpressionUUID->"fa3191e9-d0b1-4988-aaf0-\
+4e0b873bf7a7"]
+}, Open  ]]
+},
+WindowSize->{1855, 1056},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"11.2 for Linux x86 (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 469, 12, 64, "Input",ExpressionUUID->"0458da7f-3ab3-4a9e-941a-ddb013c724a6",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.}],
+Cell[1052, 36, 5680, 176, 258, "Input",ExpressionUUID->"9429a224-689a-4f9e-ae6b-889c799f9f4c",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.}],
+Cell[6735, 214, 1938, 47, 53, "Output",ExpressionUUID->"6ec17031-18e9-4b1c-9611-f3d9890ed128",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.}],
+Cell[8676, 263, 2351, 58, 43, "Output",ExpressionUUID->"021ef4a2-b2aa-4cf9-8914-1ccf18619704",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.}],
+Cell[11030, 323, 20676, 574, 329, "Input",ExpressionUUID->"a6fc664a-8b1c-42d2-ade7-e5e018f59819",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.}],
+Cell[31709, 899, 16746, 492, 241, "Input",ExpressionUUID->"2ff1a467-8fd2-4a61-808f-0a269e1acdb1",
+ CellGroupingRules->{"GroupTogetherGrouping", 10001.}]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48492, 1396, 158, 3, 31, "Input",ExpressionUUID->"639ef608-3de9-42fe-9f8b-0ede2cba6ef8"],
+Cell[48653, 1401, 4744, 112, 91, "Output",ExpressionUUID->"506a0cf7-9c9e-40d7-92a4-733739d02f40"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53434, 1518, 161, 3, 31, "Input",ExpressionUUID->"61b16270-3be7-44a9-b584-fbea81de8f61"],
+Cell[53598, 1523, 327, 10, 35, "Output",ExpressionUUID->"e4da6498-d568-4209-9cf0-30d15dabe4ea"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53962, 1538, 274, 8, 31, "Input",ExpressionUUID->"c2ee853c-dfa6-47a6-8680-45ac5c1c4c3f"],
+Cell[54239, 1548, 192, 4, 37, "Output",ExpressionUUID->"fa3191e9-d0b1-4988-aaf0-4e0b873bf7a7"]
+}, Open  ]]
+}
+]
+*)
+
