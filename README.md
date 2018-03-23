@@ -27,6 +27,10 @@
 ##### PID
 ##### LQR
 
+### Code and Algorithm
+##### The main Arduino IDE code is called **ref_test.ino**(as of right now).
+##### All the needed libraries are also in the directory called **code/libraries**
+
 ### Progress
 ###### As of right now, I got the robot balancing with simple PID control. Here are some videos showing the results:
 ###### ![Simple PID_1](https://github.com/KansoW/Two-wheel_Self-balance_Robot-/blob/master/video/VID_20180314_053201.mp4)
